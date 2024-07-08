@@ -1,41 +1,51 @@
 <?php
 class Utilisateur {
+    // Propriétés
     private $id;
     private $nom;
     private $email;
     private $mot_de_passe;
-    private $pdo;
 
-    
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
+    // Constructeur
+    public function __construct($id, $nom, $email, $mot_de_passe) {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->email = $email;
+        $this->mot_de_passe = $mot_de_passe;
     }
 
-
-    // Getters and setters for each property...
-
-    public function creer($nom, $email, $mot_de_passe) {
-        $sql = "INSERT INTO utilisateurs (nom, email, mot_de_passe) VALUES (?, ?, ?)";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$nom, $email, $mot_de_passe]);
+    // Getters
+    public function getId() {
+        return $this->id;
     }
 
-    public function supprimer($id) {
-        $sql = "DELETE FROM Utilisateurs WHERE id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['id' => $id]);
+    public function getNom() {
+        return $this->nom;
     }
 
-    public function mettreAJour($id, $nom, $email, $mot_de_passe) {
-        $sql = "UPDATE Utilisateurs SET nom = :nom, email = :email, mot_de_passe = :mot_de_passe WHERE id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['id' => $id, 'nom' => $nom, 'email' => $email, 'mot_de_passe' => $mot_de_passe]);
+    public function getEmail() {
+        return $this->email;
     }
 
-    public function afficherTout() {
-        $stmt = $this->pdo->prepare("SELECT * FROM Utilisateurs");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function getMotDePasse() {
+        return $this->mot_de_passe;
+    }
+
+    // Setters
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function setMotDePasse($mot_de_passe) {
+        $this->mot_de_passe = $mot_de_passe;
     }
 }
 ?>
