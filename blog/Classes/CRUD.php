@@ -22,6 +22,14 @@ class CRUD extends PDO{
             return false;
         }
     }
+    
+    public function selectWhere($table, $field, $value){
+        $sql = "SELECT * FROM $table WHERE $field = :$field";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":$field", $value);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
     public function insert($table, $data){
 
@@ -80,13 +88,6 @@ class CRUD extends PDO{
         }
     }
 
-    public function selectArticlesByCategory($id_categorie){
-        $sql = "SELECT * FROM Articles_Categories WHERE id_categorie = :id_categorie";
-        $stmt = $this->prepare($sql);
-        $stmt->bindValue(":id_categorie", $id_categorie);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
 }
 
 ?>

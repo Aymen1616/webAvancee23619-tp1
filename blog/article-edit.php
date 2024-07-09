@@ -4,7 +4,7 @@ if(isset($_GET['id']) && $_GET['id']!= null){
     $id = $_GET['id'];
     require_once('Classes/CRUD.php');
     $crud = new CRUD;
-    $selectId = $crud->selectId('utilisateurs',  $id);
+    $selectId = $crud->selectId('articles',  $id);
 
     if($selectId){       
         foreach($selectId as $key=>$value){
@@ -33,20 +33,20 @@ if(isset($_GET['id']) && $_GET['id']!= null){
 <body class="d-flex align-items-center justify-content-center">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">Modifier Utilisateur</h5>
-            <form action="utilisateur-update.php" method="post">
+            <h5 class="card-title">Modifier l'article</h5>
+            <form action="article-update.php" method="post">
                 <input type="hidden" name="id" value="<?= $id;?>">
                 <div class="form-group">
-                    <label for="nom">Nom:</label>
-                    <input type="text" class="form-control" id="nom" name="nom" value="<?= $nom;?>">
+                    <label for="titre">Titre:</label>
+                    <input type="text" class="form-control" id="titre" name="titre" value="<?= $titre;?>">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?= $email;?>">
+                    <label for="contenu">Contenu:</label>
+                    <input type="text" class="form-control" id="contenu" name="contenu" value="<?= $contenu;?>">
                 </div>
                 <div class="form-group">
-                    <label for="mot_de_passe">Mot de passe:</label>
-                    <input type="password" class="form-control" id="mot_de_passe" name="mot_de_passe" value="<?= $mot_de_passe;?>">
+                    <label for="date_publication">Date de publication:</label>
+                    <input type="text" class="form-control" id="date_publication" name="date_publication" value="<?= $date_publication;?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
             </form>

@@ -5,10 +5,10 @@
 require_once('Classes/CRUD.php');
 
 $crud = new CRUD;
-$id = $_POST['id'];
-echo $id; // Affiche l'id
-$delete = $crud->delete('utilisateurs',$id);
-if($delete){
+
+$update = $crud->update('articles', $_POST);
+
+if($update){
     header('location: utilisateur-index.php');
    // header('location: '.$_SERVER['HTTP_REFERER']);
 }else{

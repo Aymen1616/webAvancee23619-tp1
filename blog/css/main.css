@@ -1,0 +1,16 @@
+body {
+    height: 100vh;
+}
+.card {
+    margin: 0 auto; 
+    float: none;
+    margin-bottom: 10px;
+}
+.cardindex:hover {
+    transform: scale(1.03);
+    transition: transform .2s;
+}
+.highlight {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}

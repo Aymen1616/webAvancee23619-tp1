@@ -1,18 +1,9 @@
 <?php
 class Utilisateur {
-    // Propriétés
     private $id;
     private $nom;
     private $email;
     private $mot_de_passe;
-
-    // Constructeur
-    public function __construct($id, $nom, $email, $mot_de_passe) {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->email = $email;
-        $this->mot_de_passe = $mot_de_passe;
-    }
 
     // Getters
     public function getId() {
@@ -48,4 +39,5 @@ class Utilisateur {
         $this->mot_de_passe = $mot_de_passe;
     }
 }
+
 ?>
