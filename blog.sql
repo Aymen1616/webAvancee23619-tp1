@@ -28,9 +28,10 @@ CREATE TABLE Commentaires (
 );
 
 CREATE TABLE Likes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
     id_utilisateur INT,
     id_article INT,
+    compteur INT DEFAULT 0,
+    PRIMARY KEY (id_utilisateur, id_article),
     FOREIGN KEY (id_utilisateur) REFERENCES Utilisateurs(id),
     FOREIGN KEY (id_article) REFERENCES Articles(id)
 );
@@ -53,8 +54,9 @@ INSERT INTO Commentaires (contenu, id_utilisateur, id_article) VALUES
 ('J\'adore voyager en Europe, il y a tellement de belles villes à visiter.', 1, 3);
 
 -- Insérer des données dans la table Likes
-INSERT INTO Likes (id_utilisateur, id_article) VALUES
-(1, 2),
-(2, 3),
-(3, 1);
+INSERT INTO Likes (id_utilisateur, id_article, compteur) VALUES (1, 1, 1);
+INSERT INTO Likes (id_utilisateur, id_article, compteur) VALUES (2, 2, 1);
+INSERT INTO Likes (id_utilisateur, id_article, compteur) VALUES (3, 3, 1);
+INSERT INTO Likes (id_utilisateur, id_article, compteur) VALUES (1, 2, 1);
+INSERT INTO Likes (id_utilisateur, id_article, compteur) VALUES (2, 3, 1);
 
