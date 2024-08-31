@@ -1,3 +1,11 @@
 https://github.com/Aymen1616/webAvancee23619-tp1
 
-https://e2396713.webdev.cmaisonneuve.qc.ca/webAvancee-tp1/blog/utilisateur-index.php
+https://e2396713.webdev.cmaisonneuve.qc.ca/webAvancee-tp1/blog/mvc/login
+
+pour administrateur: email = admin@example.com et password = admin123
+pour utilisateur:email= test@test.com et password = user1
+
+
+
+pour installer PHPMailer composer require phpmailer/phpmailer
+pour installer sendgrid  composer require sendgrid/sendgrid   

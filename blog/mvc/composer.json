@@ -8,6 +8,9 @@
         }
     },
     "require": {
-        "twig/twig": "^3.10"
+        "twig/twig": "^3.10",
+        "phpmailer/phpmailer": "^6.9",
+        "sendgrid/sendgrid": "^8.1",
+        "vlucas/phpdotenv": "^5.6"
     }
 }

@@ -5,7 +5,9 @@ abstract class CRUD extends \PDO{
    final public function __construct(){
     parent::__construct('mysql:host=localhost;dbname=blog;port=3306; charset=utf8', 'root','');
     }
-
+// final public function __construct(){
+    //     parent::__construct('mysql:host=localhost;dbname=e2396713;port=3306; charset=utf8', 'e2396713','00VdvQSMiiqbMseK3Hde');
+    //     }
    final public function select($field = null, $order = 'ASC'){
         if($field == null){
             $field = $this->primaryKey;
@@ -86,6 +88,31 @@ abstract class CRUD extends \PDO{
         }else{
             return false;
         }
+    }
+
+    public function unique($field, $value){
+        $sql = "SELECT * FROM $this->table WHERE $field = :$field";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":$field", $value);
+        $stmt->execute();
+        $count = $stmt->rowCount();
+        if($count == 1){
+            return $stmt->fetch();
+        }else{
+            return false;
+        }  
+    }
+
+    public function hasMany($related, $foreignKey, $localKey) {
+        $relatedModel = new $related;
+        return $relatedModel->where($foreignKey, $this->$localKey)->get();
+    }
+
+    public function where($column, $value) {
+        $query = "SELECT * FROM {$this->table} WHERE {$column} = ?";
+        $stmt = $this->prepare($query);
+        $stmt->execute([$value]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
 }

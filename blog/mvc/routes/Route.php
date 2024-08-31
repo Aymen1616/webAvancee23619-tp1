@@ -47,6 +47,6 @@ class Route {
             }
        }
        http_response_code(404);
-       echo "404 not found";
+       include __DIR__ . '/../views/error.php';
     }
 }

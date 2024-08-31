@@ -1,21 +1,23 @@
-{{ include('layouts/header.php', {title:'Create Commentaire'})}}
-        <form method="post">
-            <div class="row">
-                <div class="card mb-4">  
-                    <div class="card-body">
-                        <h2>New Commentaire</h2>
-                        <label>Contenu
-                        <textarea name="contenu" required>{{ commentaire.contenu }}</textarea>
-                        </label>
+{{ include('layouts/header.php', {title:'Ajouter un commentaire'})}}
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="card border-light bg-light mb-4">  
+            <div class="card-body">
+                <h2>Ajouter un commentaire</h2>
+                <form action="{{ base }}/commentaire/create" method="post">
+                    <input type="hidden" name="id_article" value="{{ id_article }}">
+                    <input type="hidden" name="id_utilisateur" value="{{ id_utilisateur }}">
+                    <div class="form-group">
+                        <label for="contenu">Contenu</label>
+                        <textarea class="form-control" id="contenu" name="contenu" rows="3">{{ commentaire.contenu }}</textarea>
                         {% if errors.contenu is defined %}
-                        <span class="error">{{ errors.contenu }}</span>
+                            <div class="error">{{ errors.contenu }}</div>
                         {% endif %}
-                        <input type="hidden" name="id_utilisateur" value="{{ commentaire.id_utilisateur }}">
-                        <input type="hidden" name="id_article" value="{{ commentaire.id_article }}">
-                        <input type="submit" class="btn btn-outline-primary" value="Save">
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+                </form>
             </div>
-        </form>
-
+        </div>
+    </div>
+</div>
 {{ include('layouts/footer.php')}}
